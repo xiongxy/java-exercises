@@ -1,5 +1,6 @@
 package learn.java.exercises;
 
+import java.sql.Array;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -8,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public class Main {
 
-    private static Pattern pattern = Pattern.compile("^[-+]?[\\d]*$");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^[-+]?[\\d]*$");
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -64,7 +65,7 @@ public class Main {
 
     static void oneYearOneDay(Scanner scanner) {
         class Helper {
-            boolean LeapYearJudgment(int year) {
+            boolean leapYearJudgment(int year) {
                 if (year % 4 == 0 && year % 100 != 0) {
                     return true;
                 } else if (year % 400 == 0 && year % 3200 != 0) {
@@ -101,7 +102,7 @@ public class Main {
                     maxDay = 30;
                 } else if (mouth == 2) {
                     Helper h = new Helper();
-                    isLeapYear = h.LeapYearJudgment(year);
+                    isLeapYear = h.leapYearJudgment(year);
                     if (isLeapYear) {
                         maxDay = 29;
                     } else {
@@ -114,7 +115,7 @@ public class Main {
                     isVerification = true;
                 }
             } catch (Exception e) {
-                System.out.printf("数据输入错误 | %s | 请重新输入 \r \n", e.getMessage());
+                System.out.printf("数据输入错误 | %s | 请重新输入  \n", e.getMessage());
             }
         } while (!isVerification);
 
@@ -134,7 +135,7 @@ public class Main {
                 totalDay += 30;
             }
         }
-        System.out.printf(" %d 年 %d 月 %d 日是一年中的第 %d 天 \r \n", year, mouth, day, totalDay);
+        System.out.printf(" %d 年 %d 月 %d 日是一年中的第 %d 天 \n", year, mouth, day, totalDay);
     }
 
     static void findPerfectNumber(Scanner scanner) {
@@ -147,7 +148,7 @@ public class Main {
                 }
             }
             if (sum == i) {
-                System.out.printf("完数 %d \r \n ", i);
+                System.out.printf("完数 %d  \n ", i);
             }
         }
     }
@@ -168,7 +169,8 @@ public class Main {
     }
 
     static void arrayDilatation(Scanner scanner) throws InterruptedException {
-        gogo: while (true) {
+        gogo:
+        while (true) {
             System.out.print("初始化数组大小:");
             String arraySizeString = scanner.next();
             if (!isInteger(arraySizeString)) {
@@ -180,14 +182,14 @@ public class Main {
             for (int i = 0; i < array.length; i++) {
                 int totalNum = i + 1;
                 Thread.sleep(500);
-                System.out.printf("添加第 %d 个元素值 \r \n", totalNum);
+                System.out.printf("添加第 %d 个元素值 \n", totalNum);
                 array[i] = 1;
                 double plotRatio = (double) totalNum / array.length;
                 if (plotRatio > 0.8) {
-                    System.out.printf("开始扩容,当前容量 %d,当前已使用容量 %d,容积率 %f  \r \n", array.length, totalNum, plotRatio);
+                    System.out.printf("开始扩容,当前容量 %d,当前已使用容量 %d,容积率 %f   \n", array.length, totalNum, plotRatio);
                     //进入扩容  array 的扩容基于 新copy一个数组 底层实现也如此
-                    array = new int[(int) Math.ceil(array.length * 1.5)];
-                    System.out.printf("扩容借宿,扩容后容量为 %d \r \n", array.length);
+                    array = Arrays.copyOf(array, (int) Math.ceil(array.length * 1.5));
+                    System.out.printf("扩容借宿,扩容后容量为 %d  \n", array.length);
                 }
             }
         }
@@ -224,7 +226,7 @@ public class Main {
     }
 
     static boolean isInteger(String str) {
-        return pattern.matcher(str).matches();
+        return NUMBER_PATTERN.matcher(str).matches();
     }
 }
 

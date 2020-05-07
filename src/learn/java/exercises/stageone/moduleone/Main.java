@@ -1,6 +1,5 @@
-package learn.java.exercises;
+package learn.java.exercises.stageone.moduleone;
 
-import java.sql.Array;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -19,7 +18,7 @@ public class Main {
         }
     }
 
-    static void menu() {
+    private static void menu() {
         System.out.println("—————————— 请选择题目，选择序号进入相应分支 ——————————");
         System.out.println("1. 提示用户输入年月日信息,判断这一天是这一年中的第几天并打印");
         System.out.println("2. 编程找出 1000 以内的所有完数并打印。所谓完数就是一个数恰好等于它的因子之和,如: 6 = 1 + 2 + 3");
@@ -30,7 +29,7 @@ public class Main {
         System.out.println("——————————            End           ——————————");
     }
 
-    static boolean mainFlow(Scanner scanner) {
+    private static boolean mainFlow(Scanner scanner) {
         menu();
         System.out.print("请输入题号,退出请输入end:");
         String currentSelected = scanner.next();
@@ -63,7 +62,7 @@ public class Main {
         return false;
     }
 
-    static void oneYearOneDay(Scanner scanner) {
+    private static void oneYearOneDay(Scanner scanner) {
         class Helper {
             boolean leapYearJudgment(int year) {
                 if (year % 4 == 0 && year % 100 != 0) {
@@ -138,7 +137,7 @@ public class Main {
         System.out.printf(" %d 年 %d 月 %d 日是一年中的第 %d 天 \n", year, mouth, day, totalDay);
     }
 
-    static void findPerfectNumber(Scanner scanner) {
+    private static void findPerfectNumber(Scanner scanner) {
         System.out.println("开始打印1000内完数,第一个完数是6，所以从6开始");
         for (int i = 6; i < 1000; i++) {
             int sum = 0;
@@ -153,7 +152,7 @@ public class Main {
         }
     }
 
-    static void dichroicSphere(Scanner scanner) {
+    private static void dichroicSphere(Scanner scanner) {
         HashSet<Integer> redHashSet = new HashSet<>();
         Random random = new Random();
         while (redHashSet.size() < 6) {
@@ -168,7 +167,7 @@ public class Main {
         System.out.println();
     }
 
-    static void arrayDilatation(Scanner scanner) throws InterruptedException {
+    private static void arrayDilatation(Scanner scanner) throws InterruptedException {
         gogo:
         while (true) {
             System.out.print("初始化数组大小:");
@@ -195,7 +194,7 @@ public class Main {
         }
     }
 
-    static void gobangDraw(Scanner scanner) {
+    private static void gobangDraw(Scanner scanner) {
         String[] abcd = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
         int checkerboardSize = 17;
         String[][] checkerboard = new String[checkerboardSize][checkerboardSize];
@@ -225,7 +224,7 @@ public class Main {
         }
     }
 
-    static boolean isInteger(String str) {
+    private static boolean isInteger(String str) {
         return NUMBER_PATTERN.matcher(str).matches();
     }
 }
